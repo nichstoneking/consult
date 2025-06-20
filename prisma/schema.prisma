@@ -1,0 +1,280 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// ========================================
+// ARCHITECTURE OVERVIEW
+// ========================================
+//
+// This schema implements a DUAL-LAYER ARCHITECTURE with clear separation of concerns:
+//
+// 1. AUTHENTICATION LAYER (User, Session, Account, Verification)
+//    - Handles user identity, login/logout, OAuth providers
+//    - Uses better-auth for authentication logic
+//    - Independent of business domain
+//
+// 2. APPLICATION LAYER (AppUser, Family, FinancialAccount, etc.)
+//    - Contains all financial/business domain models
+//    - Handles budgets, transactions, categories, families
+//    - Where the actual application logic lives
+//
+// WHY SEPARATE THEM?
+// ==================
+// • CLEAN SEPARATION: Auth concerns vs business logic are completely separate
+// • AUTH FLEXIBILITY: Can swap auth systems without touching financial data
+// • MULTI-TENANCY: Families can have multiple users with different roles
+// • SCALABILITY: Different optimization strategies for each layer
+// • MAINTAINABILITY: Clear boundaries make code easier to understand and modify
+//
+// DATA FLOW:
+// ==========
+// 1. User signs in → Creates User + Session (auth layer)
+// 2. User gets linked to → AppUser (application profile)
+// 3. AppUser belongs to → Family (organization/household context)
+// 4. Family contains → All financial data (accounts, budgets, transactions, etc.)
+//
+// NAMING CONVENTIONS:
+// ==================
+// • User = Authentication identity
+// • AppUser = Application user profile
+// • Account = OAuth provider account (NOT bank account)
+// • FinancialAccount = Bank account, credit card, etc.
+//
+// This pattern is common in SaaS applications where you need both robust
+// authentication AND complex domain models in a multi-tenant environment.
+//
+// ========================================
+
+// ---------- GLOBAL SETUP ----------
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- ENUMS ----------
+
+enum FamilyRole {
+  OWNER // Full control, can delete family, manage all users
+  ADMIN // Can manage users, financial data, settings
+  MEMBER // Can view and edit shared financial data
+  VIEWER // Read-only access to shared financial data
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+enum AppUserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum WaitlistStatus {
+  PENDING // Default status when someone joins waitlist
+  APPROVED // Ready to create account
+  REJECTED // Not approved for early access
+  CONVERTED // Successfully created account
+  EXPIRED // Invitation expired
+}
+
+// ---------- AUTHENTICATION LAYER ----------
+// Better-auth models for user authentication and session management
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  emailVerified Boolean
+  image         String?
+  sessions      Session[]
+  accounts      Account[]
+
+  // Link to application layer
+  appUser AppUser?
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}
+
+// ---------- APPLICATION LAYER ----------
+// Business domain models for financial management
+
+model AppUser {
+  id        String        @id @default(cuid())
+  firstName String?
+  lastName  String?
+  timezone  String        @default("UTC")
+  locale    String        @default("en-US")
+  status    AppUserStatus @default(ACTIVE)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  // Link to authentication layer
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Multi-tenant relationships
+  familyMemberships FamilyMember[]
+
+  // User preferences and settings
+  preferences Json @default("{}")
+
+  @@map("app_users")
+}
+
+model Family {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Family settings
+  currency    String @default("USD")
+  timezone    String @default("UTC")
+  preferences Json   @default("{}")
+
+  // Multi-tenant relationships
+  members FamilyMember[]
+
+  // Family invitations
+  invitations FamilyInvitation[]
+
+  @@map("families")
+}
+
+model FamilyMember {
+  id        String     @id @default(cuid())
+  role      FamilyRole
+  joinedAt  DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  // Member preferences within this family
+  preferences Json @default("{}")
+
+  // Relationships
+  familyId  String
+  family    Family  @relation(fields: [familyId], references: [id], onDelete: Cascade)
+  appUserId String
+  appUser   AppUser @relation(fields: [appUserId], references: [id], onDelete: Cascade)
+
+  @@unique([familyId, appUserId])
+  @@map("family_members")
+}
+
+model FamilyInvitation {
+  id        String           @id @default(cuid())
+  email     String
+  role      FamilyRole
+  status    InvitationStatus @default(PENDING)
+  token     String           @unique @default(cuid())
+  expiresAt DateTime
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  // Who invited this person
+  invitedBy String?
+
+  // Which family
+  familyId String
+  family   Family @relation(fields: [familyId], references: [id], onDelete: Cascade)
+
+  @@unique([familyId, email])
+  @@map("family_invitations")
+}
+
+model Waitlist {
+  id        String         @id @default(cuid())
+  email     String         @unique
+  firstName String?
+  lastName  String?
+  status    WaitlistStatus @default(PENDING)
+  position  Int            @unique // Queue position, auto-assigned
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  // Optional metadata
+  referralSource String? // How they heard about the app
+  message        String? // Optional message from the user
+  notes          String? // Admin notes
+
+  // Invitation tracking
+  invitedAt DateTime? // When they were approved/invited
+  expiresAt DateTime? // When invitation expires
+
+  // Conversion tracking
+  convertedAt DateTime? // When they successfully created account
+  userId      String? // Link to User if they converted
+
+  @@index([status])
+  @@index([position])
+  @@index([createdAt])
+  @@map("waitlist")
+}
+
+// ---------- INDEXES AND CONSTRAINTS ----------
+
+// Performance indexes
+// @@index([userId]) on AppUser - automatically created by unique constraint
+// @@index([familyId]) on FamilyMember - automatically created by foreign key
+// @@index([familyId, role]) for role-based queries
+// @@index([email, status]) on FamilyInvitation for invitation management
