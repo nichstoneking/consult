@@ -106,6 +106,156 @@ async function getActiveFamilyId(): Promise<string | null> {
 }
 
 /**
+ * Get all transactions with enhanced filtering and pagination for transactions page
+ */
+export async function getAllTransactions(
+  options: GetTransactionsOptions & {
+    search?: string;
+    uncategorized?: boolean;
+  }
+) {
+  const familyId = await getActiveFamilyId();
+  if (!familyId) {
+    return {
+      transactions: [],
+      totalCount: 0,
+      totalPages: 0,
+    };
+  }
+
+  const {
+    limit = 50,
+    offset = 0,
+    status,
+    accountId,
+    categoryId,
+    startDate,
+    endDate,
+    search,
+    uncategorized,
+  } = options;
+
+  const prisma = getPrismaClient();
+
+  try {
+    // Build where clause with proper OR logic handling
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const whereClause: {
+      familyId: string;
+      status?: TransactionStatus;
+      accountId?: string;
+      categoryId?: string;
+      date?: { gte: Date; lte: Date };
+      OR?: any[];
+      AND?: any[];
+    } = {
+      familyId,
+      ...(status && { status }),
+      ...(accountId && { accountId }),
+      ...(categoryId && { categoryId }),
+      ...(startDate &&
+        endDate && {
+          date: {
+            gte: startDate,
+            lte: endDate,
+          },
+        }),
+    };
+
+    // Handle uncategorized filter
+    if (uncategorized) {
+      whereClause.OR = [{ categoryId: null }, { categoryId: "" }];
+    }
+
+    // Handle search filter - if we already have OR from uncategorized, we need to combine them
+    if (search) {
+      const searchConditions = [
+        {
+          description: {
+            contains: search,
+            mode: "insensitive" as const,
+          },
+        },
+        {
+          merchant: {
+            contains: search,
+            mode: "insensitive" as const,
+          },
+        },
+      ];
+
+      if (whereClause.OR) {
+        // If uncategorized filter is active, combine both conditions using AND
+        whereClause.AND = [
+          {
+            OR: whereClause.OR, // uncategorized conditions
+          },
+          {
+            OR: searchConditions, // search conditions
+          },
+        ];
+        delete whereClause.OR;
+      } else {
+        // If no uncategorized filter, just add search OR conditions
+        whereClause.OR = searchConditions;
+      }
+    }
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+
+    const [transactions, totalCount] = await Promise.all([
+      prisma.transaction.findMany({
+        where: whereClause,
+        include: {
+          account: {
+            select: {
+              name: true,
+              type: true,
+            },
+          },
+          category: {
+            select: {
+              id: true,
+              name: true,
+              icon: true,
+              color: true,
+            },
+          },
+        },
+        orderBy: {
+          date: "desc",
+        },
+        take: limit,
+        skip: offset,
+      }),
+      prisma.transaction.count({
+        where: whereClause,
+      }),
+    ]);
+
+    // Transform Decimal amounts to numbers for client components
+    const transformedTransactions = transactions.map((transaction) => ({
+      ...transaction,
+      amount: Number(transaction.amount),
+    }));
+
+    return {
+      transactions: transformedTransactions,
+      totalCount,
+      totalPages: Math.ceil(totalCount / limit),
+    };
+  } catch (error) {
+    console.error("Error fetching all transactions:", error);
+    return {
+      transactions: [],
+      totalCount: 0,
+      totalPages: 0,
+    };
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+/**
  * Get recent transactions for the dashboard transaction table
  */
 export async function getTransactions(options: GetTransactionsOptions = {}) {
@@ -163,7 +313,11 @@ export async function getTransactions(options: GetTransactionsOptions = {}) {
       skip: offset,
     });
 
-    return transactions;
+    // Transform Decimal amounts to numbers for client components
+    return transactions.map((transaction) => ({
+      ...transaction,
+      amount: Number(transaction.amount),
+    }));
   } catch (error) {
     console.error("Error fetching transactions:", error);
     return [];
@@ -969,6 +1123,92 @@ export async function seedUserData(resetFirst: boolean = false) {
   } catch (error) {
     console.error("Error seeding user data:", error);
     throw new Error("Failed to seed user data");
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+/**
+ * Update transaction category and automatically transition status to RECONCILED
+ */
+export async function updateTransactionCategory(
+  transactionId: string,
+  categoryId: string
+) {
+  const familyId = await getActiveFamilyId();
+  if (!familyId) {
+    throw new Error("User not authenticated or no family found");
+  }
+
+  const prisma = getPrismaClient();
+
+  try {
+    // Verify the transaction belongs to the user's family
+    const transaction = await prisma.transaction.findFirst({
+      where: {
+        id: transactionId,
+        familyId: familyId,
+      },
+    });
+
+    if (!transaction) {
+      throw new Error("Transaction not found or access denied");
+    }
+
+    // Verify the category belongs to the user's family
+    const category = await prisma.category.findFirst({
+      where: {
+        id: categoryId,
+        familyId: familyId,
+        isActive: true,
+      },
+    });
+
+    if (!category) {
+      throw new Error("Category not found or access denied");
+    }
+
+    // Update the transaction with the new category and status
+    const updatedTransaction = await prisma.transaction.update({
+      where: {
+        id: transactionId,
+      },
+      data: {
+        categoryId: categoryId,
+        status: "RECONCILED",
+        isReconciled: true,
+        updatedAt: new Date(),
+      },
+      include: {
+        account: {
+          select: {
+            name: true,
+            type: true,
+          },
+        },
+        category: {
+          select: {
+            name: true,
+            icon: true,
+            color: true,
+          },
+        },
+      },
+    });
+
+    // Transform Decimal amount to number for client components
+    const serializedTransaction = {
+      ...updatedTransaction,
+      amount: Number(updatedTransaction.amount),
+    };
+
+    return {
+      success: true,
+      transaction: serializedTransaction,
+    };
+  } catch (error) {
+    console.error("Error updating transaction category:", error);
+    throw error;
   } finally {
     await prisma.$disconnect();
   }
