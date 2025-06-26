@@ -19,7 +19,7 @@ export const APP_HOSTNAMES = new Set([
 export function constructMetadata({
   title = siteConfig.name,
   description = siteConfig.description,
-  image = "https://badget.tech/og.png",
+  image = "https://badget.tech/og-image.png",
   icons = "/favicon.ico",
   noIndex = false,
 }: {
