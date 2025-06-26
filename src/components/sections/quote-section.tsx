@@ -1,4 +1,3 @@
- 
 import { Button } from "@/components/ui/button";
 import { Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -32,7 +31,7 @@ export function QuoteSection() {
         </SectionHeader>
 
         {/* CTA Buttons */}
-        <div className="flex items-center gap-3 justify-center pb-8 flex-wrap">
+        <div className="flex items-center gap-3 justify-center pb-8 flex-wrap pt-8">
           <Button asChild className="pr-2">
             <Link href={quoteSection.primaryButton.href}>
               {quoteSection.primaryButton.text}
@@ -44,7 +43,10 @@ export function QuoteSection() {
           </Button>
           <Button asChild variant="outline" className="pl-2.5">
             <Link href={quoteSection.secondaryButton.href}>
-              <Calendar className="!size-3.5 opacity-50" strokeWidth={2.5} />
+              <Calendar
+                className="!size-3.5 opacity-50 mt-2"
+                strokeWidth={2.5}
+              />
               {quoteSection.secondaryButton.text}
             </Link>
           </Button>
