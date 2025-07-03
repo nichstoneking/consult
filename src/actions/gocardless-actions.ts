@@ -120,11 +120,6 @@ function getPrismaClient() {
 }
 
 function getBaseUrl(): string {
-  // For Vercel deployments
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-
   // Custom app URL environment variable
   if (process.env.NEXT_PUBLIC_APP_URL) {
     return process.env.NEXT_PUBLIC_APP_URL;
