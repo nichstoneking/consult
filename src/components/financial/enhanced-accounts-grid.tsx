@@ -4,6 +4,7 @@ import {
   TrendingDown,
   AlertTriangle,
   Activity,
+  Link as LinkIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { AccountMiniChart } from "./charts/account-mini-chart";
@@ -66,6 +67,11 @@ export function EnhancedAccountsGrid({ accounts }: EnhancedAccountsGridProps) {
     return "text-muted-foreground";
   };
 
+  // Check if account is connected via Plaid
+  const isPlaidConnected = (account: EnhancedAccount) => {
+    return account.isPlaidConnected;
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {accounts.map((account) => (
@@ -86,6 +92,11 @@ export function EnhancedAccountsGrid({ accounts }: EnhancedAccountsGridProps) {
                     />
                   )}
                   {account.name}
+                  {isPlaidConnected(account) && (
+                    <span title="Connected via Plaid">
+                      <LinkIcon className="h-3 w-3 text-blue-600" />
+                    </span>
+                  )}
                 </h3>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">
@@ -98,6 +109,11 @@ export function EnhancedAccountsGrid({ accounts }: EnhancedAccountsGridProps) {
                     {getStatusIcon(account.status)}
                     <span className="ml-1 capitalize">{account.status}</span>
                   </Badge>
+                  {isPlaidConnected(account) && (
+                    <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                      Auto-sync
+                    </Badge>
+                  )}
                 </div>
               </div>
             </div>
