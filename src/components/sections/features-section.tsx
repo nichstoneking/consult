@@ -1,6 +1,6 @@
 import { SectionHeader } from "@/components/section-header";
 import { cn } from "@/lib/utils";
-import { PiggyBank, BarChart3 } from "lucide-react";
+import { Cpu, LineChart } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
 
@@ -17,11 +17,11 @@ export default function FeaturesSection() {
 
         <SectionHeader>
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">
-            Tailored for Your Financial Success
+            Tailored for Your Production AI Journey
           </h2>
           <p className="text-muted-foreground text-center text-balance font-medium">
-            Every recommendation, insight, and suggestion is personalized to
-            your unique financial situation and goals.
+            Every engagement is customized to your unique technical stack,
+            business requirements, and organizational maturity.
           </p>
         </SectionHeader>
 
@@ -29,12 +29,12 @@ export default function FeaturesSection() {
           <FeatureCard>
             <div className="p-6">
               <span className="text-muted-foreground flex items-center gap-2">
-                <PiggyBank className="size-4" />
-                Custom Budget Optimization
+                <Cpu className="size-4" />
+                Custom Implementation Strategy
               </span>
               <p className="mt-8 text-2xl font-semibold">
-                AI creates budgets that actually work for your lifestyle,
-                automatically adjusting to help you save more.
+                We design AI systems that work for your specific use case,
+                automatically scaling to handle production complexity.
               </p>
             </div>
 
@@ -55,12 +55,12 @@ export default function FeaturesSection() {
           <FeatureCard>
             <div className="p-6">
               <span className="text-muted-foreground flex items-center gap-2">
-                <BarChart3 className="size-4" />
-                Behavioral Spending Insights
+                <LineChart className="size-4" />
+                Comprehensive Monitoring
               </span>
               <p className="mt-8 text-2xl font-semibold">
-                Understand your spending patterns and discover optimization
-                opportunities through AI-powered analysis.
+                Understand your AI system's behavior and discover optimization
+                opportunities through continuous performance monitoring.
               </p>
             </div>
 
@@ -85,28 +85,28 @@ export default function FeaturesSection() {
 
               <div className="relative z-10 p-8 flex flex-col items-center justify-center h-full">
                 <p className="mx-auto mb-8 max-w-md text-balance text-center text-2xl font-semibold text-primary">
-                  AI-powered insights that adapt to your unique financial
-                  patterns and goals.
+                  Production-ready AI systems that adapt to your unique
+                  technical requirements and scale.
                 </p>
 
                 <div className="flex justify-center gap-6 overflow-hidden">
                   <CircularUI
-                    label="Income"
+                    label="Deploy"
                     circles={[{ pattern: "border" }, { pattern: "border" }]}
                   />
 
                   <CircularUI
-                    label="Budget"
+                    label="Monitor"
                     circles={[{ pattern: "none" }, { pattern: "primary" }]}
                   />
 
                   <CircularUI
-                    label="Savings"
+                    label="Optimize"
                     circles={[{ pattern: "blue" }, { pattern: "none" }]}
                   />
 
                   <CircularUI
-                    label="Goals"
+                    label="Scale"
                     circles={[{ pattern: "primary" }, { pattern: "none" }]}
                     className="hidden sm:block"
                   />

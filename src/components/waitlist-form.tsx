@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Loader2, CheckCircle } from "lucide-react";
-import { joinWaitlist } from "@/actions/waitlist-actions";
 import confetti from "canvas-confetti";
 
 export function WaitlistForm() {
@@ -13,34 +12,28 @@ export function WaitlistForm() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setMessage(null);
+    setIsPending(true);
 
-    startTransition(async () => {
-      try {
-        const result = await joinWaitlist({ email });
-        if (result.success) {
-          setMessage(result.message || "You're on the waitlist!");
-          setIsSuccess(true);
-          setEmail("");
+    // Simulate API call with delay
+    setTimeout(() => {
+      setMessage("You're on the waitlist!");
+      setIsSuccess(true);
+      setEmail("");
+      setIsPending(false);
 
-          // Trigger confetti animation
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-          });
-        } else {
-          setError(result.message || "Something went wrong");
-        }
-      } catch {
-        setError("Something went wrong");
-      }
-    });
+      // Trigger confetti animation
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+    }, 1000);
   };
 
   if (isSuccess) {
@@ -52,7 +45,7 @@ export function WaitlistForm() {
         <h3 className="text-xl font-medium">You&apos;re on the waitlist!</h3>
         <p className="text-muted-foreground">
           Thanks for joining! We&apos;ll keep you updated on our progress and
-          notify you when Badget is ready.
+          notify you when Ballast is ready.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
           <Button

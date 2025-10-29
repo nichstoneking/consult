@@ -1,183 +1,197 @@
-<a href="https://badget-eight-gilt.vercel.app/">
-  <h1 align="center">Badget: AI-Powered Financial Management Platform</h1>
-</a>
+# Ballast - Frontend UI Kit
 
- <img width="1440" alt="dashboard_mockup" src="https://github.com/projectx-codehagen/Badget/assets/24507211/2c2b8e43-3d18-4b28-b8d0-5dc0cbdb530f">
+> **Frontend-Only Version** - A beautiful, modern financial management UI built with Next.js 15, React 19, and Tailwind CSS.
 
-<p align="center">
-  Ushering in a new era of financial management with cutting-edge AI. Badget redefines how you track, analyze, and optimize your finances, ensuring smarter, more secure financial decisions.
-</p>
+This is a **pure frontend** demonstration of Ballast's user interface. All backend logic, database, and authentication have been removed to provide a clean, ready-to-use UI kit.
 
-<p align="center">
-  <!-- <a href="https://twitter.com/placeholder">
-    <img src="https://img.shields.io/twitter/follow/badget?style=flat&label=%40badgety&logo=twitter&color=0bf&logoColor=fff" alt="Twitter" />
-  </a> -->
-  <a href="https://github.com/projectx-codehagen/Badget/blob/main/LICENSE.md">
-    <img src="https://img.shields.io/github/license/projectx-codehagen/Badget?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
-  </a>
-</p>
+## 🎨 What's Included
 
-<p align="center">
-  <a href="#introduction"><strong>Introduction</strong></a> ·
-  <a href="#installation"><strong>Installation</strong></a> ·
-  <a href="#tech-stack--features"><strong>Tech Stack + Features</strong></a> ·
-  <a href="#architecture"><strong>Architecture</strong></a> ·
-  <a href="#contributing"><strong>Contributing</strong></a>
-</p>
-<br/>
+### ✅ Complete UI Components
+- 50+ beautifully crafted components using shadcn/ui
+- Fully responsive layouts
+- Dark/light theme support
+- Smooth animations with Framer Motion
+- Professional icons from Tabler Icons
 
-## Introduction
+### ✅ Marketing Website
+- Stunning landing page with bento grid layout
+- Animated hero section
+- Feature showcases
+- Pricing section
+- Testimonials
+- FAQ section
+- Blog with MDX support
+- Legal pages (Privacy, Terms, etc.)
+- Help center
 
-Welcome to Badget, the "Copilot for Money" - an AI-powered financial management platform that provides unparalleled insights into your spending habits and financial patterns. Built with a family-first design, Badget empowers households to budget better, track expenses effortlessly, and achieve their financial goals through intelligent automation and real-time insights.
+### ✅ Design System
+- Consistent color palette
+- Typography scale
+- Spacing system
+- Component variants
+- Accessible UI components
 
-**Key Features:**
-- **Unified Financial Dashboard** - All accounts in one place with smart categorization
-- **AI-Driven Insights** - Intelligent spending analysis and personalized recommendations  
-- **Family-First Design** - Multi-user households with role-based permissions
-- **Real-time Financial Health** - Instant alerts, goal tracking, and financial scoring
-- **Automated Budgeting** - Dynamic budget creation based on spending patterns
-  - *See [AI Budgeting Guide](docs/ai-budgeting-guide.md) (including [Using Vercel AI](docs/ai-budgeting-guide.md#using-vercel-ai)) for how to leverage these features*
-- **Advanced AI Tools** - Anomaly detection, spending forecasts and natural-language insights
-
-## Architecture
-
-Badget implements a **dual-layer architecture** with clean separation between authentication and business logic:
-
-### Authentication Layer
-- User identity and session management via **Better-auth**  
-- OAuth provider integration (Google, GitHub, etc.)
-- Independent of business domain
-
-### Application Layer  
-- Financial domain models (accounts, transactions, budgets)
-- Family/household organization with role-based access
-- AI insights and recommendations engine
-- Core application business logic
-
-## What we are using
-
-Next.js 15, Better-auth, Prisma, PostgreSQL, Shadcn/ui, Tailwind CSS, Framer Motion, and TypeScript.
-<br/>
-All seamlessly integrated to accelerate financial management innovation.
-
-## Directory Structure
-
-Badget follows a clean, scalable architecture:
-
-    .
-    ├── src                          # Main project lives here
-    │    ├── actions                 # Server actions for auth and business logic
-    │    ├── app                     # Next.js App Router structure
-    │    │   ├── (marketing)         # Public marketing pages
-    │    │   ├── api                 # API routes
-    │    │   └── dashboard           # Protected dashboard area
-    │    ├── components              # Reusable UI components
-    │    │   ├── auth               # Authentication components
-    │    │   ├── sections           # Landing page sections
-    │    │   └── ui                 # Shadcn/ui components
-    │    ├── lib                    # Utilities and configurations
-    │    └── generated              # Generated Prisma client
-    ├── prisma                      # Database schema and migrations
-    └── README.md
-
-## Installation
-
-Clone & create this repo locally with the following command:
+## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/codehagen/Badget
-```
-
-1. Install dependencies using pnpm:
-
-```bash
-pnpm install
-```
-
-2. Initialize Prisma with custom output directory:
-
-```bash
-npx prisma init --db --output ../src/generated/prisma
-```
-
-3. Copy `.env.example` to `.env.local` and update the variables:
-
-```bash
-cp .env.example .env.local
-```
-
-4. Set up your environment variables:
-
-   The `.env.example` file contains detailed explanations for each variable. Key requirements:
-
-   1. **Database**: We are using [Prisma Database](http://prisma.io/) (This is created over)  
-   2. **Authentication**: Configure Better-auth OAuth providers
-
-   **For Google Auth Setup:**
-   
-   To use Google as a social provider, create a new project in the [Google Cloud Console](https://console.cloud.google.com/).
-   
-   In **Google Cloud Console > Credentials > Authorized redirect URIs**, set:
-   - **Local development**: `http://localhost:3000/api/auth/callback/google`
-   - **Production**: `https://yourdomain.com/api/auth/callback/google`
-
-5. Push the database schema:
-```bash
-# Generate Prisma client and push schema
-pnpm db:generate
-pnpm db:push
-``` 
-
-1. Start the development server:
-```bash
-# Start the development server with Turbopack
+# The project is already set up with node_modules
+# Just start the dev server
 pnpm dev
 ```
 
-## Tech Stack + Features
+Open [http://localhost:3000](http://localhost:3000) to see the result.
 
-### Frameworks
+## 📁 Project Structure
 
-- [Next.js 15](https://nextjs.org/) – React framework with App Router for optimal performance
-- [Better-auth](https://better-auth.com/) – Modern authentication with OAuth providers (Google, GitHub)
-- [Prisma](https://www.prisma.io/) – Type-safe ORM with PostgreSQL
-- [React Email](https://react.email/) – Powerful email framework for notifications
+```
+src/
+├── app/
+│   ├── (marketing)/          # Marketing pages
+│   │   ├── page.tsx          # Landing page
+│   │   ├── blog/             # Blog system
+│   │   ├── about/            # About page
+│   │   ├── help/             # Help center
+│   │   ├── legal/            # Legal pages
+│   │   └── waitlist/         # Waitlist page
+│   ├── layout.tsx            # Root layout
+│   └── globals.css           # Global styles
+│
+├── components/
+│   ├── ui/                   # shadcn/ui components
+│   ├── sections/             # Landing page sections
+│   ├── blog/                 # Blog components
+│   ├── mdx/                  # MDX components
+│   ├── *-animation.tsx       # Feature animations
+│   └── ...                   # Other components
+│
+├── lib/
+│   ├── config.tsx            # Site configuration
+│   ├── utils.ts              # Utilities
+│   └── construct-metadata.ts # SEO helpers
+│
+└── data/                     # Static data
+```
 
-### Platforms
+## 🎯 Use Cases
 
-- [Vercel](https://vercel.com/) – Seamless deployment and preview environments
-- [Neon](https://neon.tech/) – Serverless PostgreSQL for scalable data management
-- [Resend](https://resend.com/) – Reliable email delivery infrastructure
+This frontend kit is perfect for:
 
-### UI & Design
+1. **Design System Showcase** - Demonstrate your component library
+2. **UI/UX Portfolio** - Show off your design skills
+3. **Rapid Prototyping** - Build mockups quickly
+4. **Client Presentations** - Present polished interfaces
+5. **Static Site Deployment** - Deploy to Vercel/Netlify
+6. **Component Library** - Extract components for other projects
+7. **Learning Resource** - Study modern React patterns
 
-- [Shadcn/ui](https://ui.shadcn.com/) – Beautiful components built on Radix UI and Tailwind CSS
-- [Magic UI](https://magicui.design/) – 150+ free animated components and effects for modern landing pages
-- [Tailark](https://tailark.com/) – Modern, responsive pre-built UI blocks for marketing websites
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS for rapid development
-- [Framer Motion](https://framer.com/motion) – Smooth animations and micro-interactions
-- [Lucide](https://lucide.dev/) – Consistent, beautiful icons
-- [Recharts](https://recharts.org/) – Financial data visualization
+## 🛠️ Tech Stack
 
-### Core Features
+- **Framework:** Next.js 15 with App Router
+- **React:** Version 19
+- **Styling:** Tailwind CSS 4
+- **Components:** shadcn/ui + Radix UI
+- **Animations:** Framer Motion
+- **Content:** MDX with Content Collections
+- **Icons:** Tabler Icons, Lucide React
+- **Typography:** Geist Sans & Geist Mono fonts
 
-- **Multi-tenant Family System** - Role-based access control (Owner, Admin, Member, Viewer)
-- **Dual-layer Architecture** - Clean separation of auth and business logic
-- **Real-time Dashboard** - Live financial insights and account overview
-- **Responsive Design** - Mobile-first approach with beautiful UI/UX
-- **Type Safety** - End-to-end TypeScript for reliability
+## 📦 Key Features
 
-## Contributing
+### Components
+- Responsive navigation with mobile menu
+- Animated bento grid layouts
+- Interactive pricing cards
+- Testimonial carousels
+- Feature showcases
+- Call-to-action sections
+- Blog post cards
+- Newsletter signup forms
 
-We love our contributors! Here's how you can contribute:
+### Styling
+- CSS variables for theming
+- Dark mode support
+- Smooth transitions
+- Hover effects
+- Loading states
+- Toast notifications
 
-- [Open an issue](https://github.com/codehagen/badget/issues) if you believe you've encountered a bug.
-- Make a [pull request](https://github.com/codehagen/badget/pull) to add new features/make quality-of-life improvements/fix bugs.
+### Content
+- MDX-powered blog
+- Syntax highlighting for code blocks
+- Table of contents generation
+- Reading time estimation
+- SEO-optimized metadata
 
-<a href="https://github.com/codehagen/badget/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=codehagen/badget" />
-</a>
+## 🎨 Customization
 
-## Repo Activity
+All configuration is centralized in `/src/lib/config.tsx`:
 
-![Nextify repo activity – generated by Axiom](https://repobeats.axiom.co/api/embed/c03baff974deeb73d0da7788b8455d04f8e17fc8.svg "Repobeats analytics image")
+```typescript
+export const siteConfig = {
+  name: "Your App Name",
+  description: "Your description",
+  url: "https://yoursite.com",
+  // ... customize everything
+}
+```
+
+### Theme Customization
+
+Edit `/src/app/globals.css` to modify:
+- Color palette
+- Typography
+- Spacing
+- Border radius
+- Shadows
+
+## 📝 Scripts
+
+```bash
+pnpm dev      # Start development server
+pnpm build    # Build for production
+pnpm start    # Start production server
+pnpm lint     # Run ESLint
+```
+
+## 🌐 Deployment
+
+Deploy to Vercel (recommended):
+
+```bash
+# Push to GitHub and connect to Vercel
+# Or use Vercel CLI
+vercel
+```
+
+The site is fully static and can also be deployed to:
+- Netlify
+- Cloudflare Pages
+- AWS Amplify
+- GitHub Pages
+
+## 📚 Documentation
+
+- **FRONTEND-ONLY.md** - Details about what was removed
+- **STYLING-GUIDE.md** - Styling conventions (if exists)
+- Component documentation in each file
+
+## 🤝 Contributing
+
+Feel free to use this as a base for your projects! Customize, extend, and build amazing things.
+
+## 📄 License
+
+Check the LICENSE.md file for details.
+
+## 🙏 Credits
+
+- Design inspired by modern SaaS applications
+- Components built on shadcn/ui
+- Icons from Tabler Icons and Lucide
+- Animations powered by Framer Motion
+
+---
+
+**Note:** This is a frontend-only version. No database, authentication, or API calls are made. Perfect for showcasing UI/UX work or as a starting point for your own project.
+
+Enjoy building! 🚀

@@ -24,8 +24,6 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { useSession, signOut } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function NavUserSkeleton() {
@@ -47,30 +45,13 @@ export function NavUserSkeleton() {
 
 export function NavUser() {
   const { isMobile } = useSidebar();
-  const { data: session, isPending } = useSession();
-  const router = useRouter();
 
-  const handleSignOut = async () => {
-    await signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.push("/sign-in");
-        },
-      },
-    });
+  // Mock user data for frontend-only version
+  const user = {
+    name: "Demo User",
+    email: "demo@example.com",
+    image: null,
   };
-
-  // Show skeleton while loading
-  if (isPending) {
-    return <NavUserSkeleton />;
-  }
-
-  // Don't render if no session
-  if (!session?.user) {
-    return null;
-  }
-
-  const user = session.user;
 
   return (
     <SidebarMenu>
@@ -134,7 +115,7 @@ export function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleSignOut}>
+            <DropdownMenuItem>
               <IconLogout />
               Log out
             </DropdownMenuItem>

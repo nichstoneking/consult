@@ -1,9 +1,9 @@
 import { SectionHeader } from "@/components/section-header";
 
-export function WhatIsBadgetSection() {
+export function WhatIsBallastSection() {
   return (
     <section
-      id="what-is-badget"
+      id="what-is-Ballast"
       className="flex flex-col items-center justify-center w-full relative px-5 md:px-10"
     >
       <div className="border-x mx-5 md:mx-10 relative">
@@ -13,10 +13,10 @@ export function WhatIsBadgetSection() {
 
         <SectionHeader>
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">
-            What is Badget?
+            What is Ballast?
           </h2>
           <p className="text-muted-foreground text-center text-balance font-medium">
-            Badget is a modern, open-source AI-powered personal finance
+            Ballast is a modern, open-source AI-powered personal finance
             platform. We power smart budgets, spending insights, and predictive
             analytics tailored for 1,000+ families globally.
           </p>
@@ -37,7 +37,7 @@ export function WhatIsBadgetSection() {
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold">Family-First Design</h3>
                 <p className="text-muted-foreground">
-                  Built specifically for families, Badget helps you manage
+                  Built specifically for families, Ballast helps you manage
                   shared expenses, set family budgets, and teach financial
                   literacy to the next generation through intuitive tools and
                   dashboards.

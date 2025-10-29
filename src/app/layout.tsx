@@ -1,5 +1,4 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { CommandMenu } from "@/components/dialog/command-menu";
 import { constructMetadata } from "@/lib/construct-metadata";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -21,9 +20,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = constructMetadata({
-  title: "Badget - Makes you save money",
+  title: "Ballast - Production AI Consulting",
   description:
-    "Empower your financial management with AI-driven insights making tracking and optimizing your finances effortless.",
+    "Expert AI consulting that bridges the gap between proof-of-concept and production. Deep technical implementation, optimization, and enterprise AI governance.",
 });
 
 export default function RootLayout({
@@ -48,7 +47,6 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
-          <CommandMenu />
         </ThemeProvider>
       </body>
     </html>

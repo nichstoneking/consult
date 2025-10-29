@@ -1,9 +1,9 @@
+import { ArchitectureBentoAnimation } from "@/components/architecture-bento-animation";
 import { FirstBentoAnimation } from "@/components/first-bento-animation";
 import { FourthBentoAnimation } from "@/components/fourth-bento-animation";
 import { SecondBentoAnimation } from "@/components/second-bento-animation";
 import { ThirdBentoAnimation } from "@/components/third-bento-animation";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export const Highlight = ({
   children,
@@ -27,23 +27,23 @@ export const Highlight = ({
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
-  name: "Badget",
+  name: "Ballast",
   description:
-    "AI-powered personal finance app that turns raw transactions into real-time spending insights, predictive budgets & holistic financial health scores.",
-  cta: "Get Started",
+    "Expert AI consulting that bridges the gap between proof-of-concept and production. Deep technical implementation, post-deployment optimization, and enterprise AI governance.",
+  cta: "Schedule Consultation",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
-    "AI Personal Finance App",
-    "Budgeting Tool",
-    "Spending Tracker",
-    "Predictive Budgeting",
-    "Financial Health Score",
-    "Money Management App",
-    "Family Budgeting App",
-    "Expense Insights",
+    "AI Consulting",
+    "Production AI Systems",
+    "AI Implementation",
+    "AI Governance",
+    "Enterprise AI",
+    "AI Optimization",
+    "AI Risk Management",
+    "Production ML Systems",
   ],
   links: {
-    email: "support@badget.tech",
+    email: "hello@ballast.ai",
     twitter: "https://tx.com/codehagen",
     discord: "https://discord.gg/TK7k6uY4",
     github: "https://github.com/codehagen",
@@ -52,11 +52,11 @@ export const siteConfig = {
   nav: {
     links: [
       { id: 1, name: "Home", href: "#hero" },
-      { id: 2, name: "How it Works", href: "#bento" },
-      { id: 3, name: "Features", href: "#features" },
-      { id: 4, name: "Pricing", href: "#pricing" },
+      { id: 2, name: "Services", href: "#bento" },
+      { id: 3, name: "Expertise", href: "#features" },
+      { id: 4, name: "Case Studies", href: "#pricing" },
       { id: 5, name: "Blog", href: "/blog" },
-      { id: 6, name: "Help", href: "/help" },
+      { id: 6, name: "Contact", href: "/help" },
     ],
   },
   hero: {
@@ -72,17 +72,17 @@ export const siteConfig = {
         <path d="M8 1C8.55228 1 9 1.44772 9 2V3H11C11.5523 3 12 3.44772 12 4V6H13C13.5523 6 14 6.44772 14 7V13C14 13.5523 13.5523 14 13 14H3C2.44772 14 2 13.5523 2 13V7C2 6.44772 2.44772 6 3 6H4V4C4 3.44772 4.44772 3 5 3H7V2C7 1.44772 7.44772 1 8 1ZM10 5H6V4H5V5H4V7H3V13H13V7H12V5H11V4H10V5ZM8 8C8.55228 8 9 8.44772 9 9C9 9.55228 8.55228 10 8 10C7.44772 10 7 9.55228 7 9C7 8.44772 7.44772 8 8 8Z" />
       </svg>
     ),
-    badge: "AI-powered financial insights",
-    title: "Master Your Money With AI",
+    badge: "Production AI Expertise",
+    title: "Ship AI That Actually Works in Production",
     description:
-      "Badget turns raw transactions into real-time spending insights, predictive budgets, and a holistic financial health score. Spend smarter, save faster.",
+      "Ballast bridges the gap between proof-of-concept and production-grade AI systems. We provide deep technical implementation, post-deployment optimization, and enterprise AI governance for teams already deploying.",
     cta: {
       primary: {
-        text: "Join Waitlist",
+        text: "Book Consultation",
         href: "/waitlist",
       },
       secondary: {
-        text: "Log in",
+        text: "Case Studies",
         href: "/waitlist",
       },
     },
@@ -289,62 +289,62 @@ export const siteConfig = {
     ],
   },
   featureSection: {
-    title: "Simple. Smart. Secure.",
+    title: "Expert. Proven. Production-Ready.",
     description:
-      "Discover how Badget transforms your financial data into actionable insights in four easy steps",
+      "Discover how Ballast helps enterprises deploy and scale AI systems that deliver real business value",
     items: [
       {
         id: 1,
-        title: "Connect Your Accounts",
+        title: "Deep Technical Implementation",
         content:
-          "Securely link your bank accounts, credit cards, and investment accounts. Bank-grade encryption keeps your data safe.",
+          "Our team has shipped production AI systems at scale. We bring hands-on expertise in ML ops, infrastructure, and system design to turn your AI vision into reality.",
         image:
           "https://images.unsplash.com/photo-1720371300677-ba4838fa0678?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         id: 2,
-        title: "AI Analyzes Your Spending",
+        title: "Post-Deployment Optimization",
         content:
-          "Our AI engine processes your transactions, identifying patterns, trends, and opportunities for optimization.",
+          "AI systems degrade over time. We monitor, debug, and optimize your production AI to ensure consistent performance, cost efficiency, and reliability.",
         image:
           "https://images.unsplash.com/photo-1686170287433-c95faf6d3608?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8fA%3D%3D",
       },
       {
         id: 3,
-        title: "Get Personalized Insights",
+        title: "POC to Production Bridge",
         content:
-          "Receive real-time spending alerts, budget recommendations, and predictive cash flow forecasts tailored to you.",
+          "The hardest part isn't building a demo—it's making it work at scale. We bridge the gap between proof-of-concept and production-grade systems that handle real-world complexity.",
         image:
           "https://images.unsplash.com/photo-1720378042271-60aff1e1c538?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         id: 4,
-        title: "Achieve Financial Goals",
+        title: "AI Governance & Risk Management",
         content:
-          "Track progress toward your savings goals, debt payoff, and investment targets with automated guidance and tips.",
+          "Deploying AI at scale requires robust governance. We help enterprises establish frameworks for model monitoring, bias detection, compliance, and responsible AI practices.",
         image:
           "https://images.unsplash.com/photo-1666882990322-e7f3b8df4f75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
       },
     ],
   },
   bentoSection: {
-    title: "Empower Your Finances with AI",
+    title: "Production AI Services That Scale",
     description:
-      "Experience AI-powered spending insights, predictive budgeting, and real-time financial health monitoring to optimize your money management.",
+      "Comprehensive consulting services to take your AI from prototype to production-grade systems that deliver measurable business impact.",
     items: [
       {
         id: 1,
-        content: <FirstBentoAnimation />,
-        title: "Real-time Spending Analysis",
+        content: <ArchitectureBentoAnimation />,
+        title: "System Architecture & Design",
         description:
-          "Track every transaction instantly. Get immediate insights into spending patterns, unusual purchases, and budget performance.",
+          "Design scalable, reliable AI systems from the ground up. We architect for performance, cost efficiency, and long-term maintainability.",
       },
       {
         id: 2,
         content: <SecondBentoAnimation />,
-        title: "Seamless Bank Integration",
+        title: "MLOps & Infrastructure",
         description:
-          "Connect all your financial accounts securely. Unified dashboard for banks, credit cards, investments, and crypto wallets.",
+          "Build robust ML pipelines with automated training, testing, and deployment. Implement monitoring, versioning, and rollback strategies.",
       },
       {
         id: 3,
@@ -356,56 +356,51 @@ export const siteConfig = {
             ]}
           />
         ),
-        title: "Financial Health Score",
+        title: "Performance Optimization",
         description:
-          "Get a holistic view of your financial wellness. Track progress with actionable recommendations to improve your score.",
+          "Continuous monitoring and optimization of AI systems. Reduce latency, improve accuracy, and lower inference costs.",
       },
       {
         id: 4,
         content: <FourthBentoAnimation once={false} />,
-        title: "Smart Budget Optimization",
+        title: "Enterprise AI Governance",
         description:
-          "AI creates and adjusts your budget automatically. Receive alerts when overspending and tips to stay on track.",
+          "Establish frameworks for responsible AI deployment. Model monitoring, bias detection, compliance, and risk management.",
       },
     ],
   },
   benefits: [
     {
       id: 1,
-      text: "Save money each month with AI-powered spending optimization.",
+      text: "Ship production AI systems 3x faster with battle-tested architecture and implementation patterns.",
       image: "/Device-6.png",
     },
     {
       id: 2,
-      text: "Reduce financial stress with predictive budgeting and alerts.",
+      text: "Reduce AI infrastructure costs by 40-60% through expert optimization and efficiency improvements.",
       image: "/Device-7.png",
     },
     {
       id: 3,
-      text: "Improve financial wellness with personalized health scores.",
+      text: "Mitigate AI risks with comprehensive governance frameworks and continuous monitoring.",
       image: "/Device-8.png",
     },
     {
       id: 4,
-      text: "Increase savings with AI-driven investment and spending insights.",
+      text: "Scale confidently with production-grade systems designed for reliability and performance.",
       image: "/Device-1.png",
     },
   ],
   growthSection: {
-    title: "Tailored for Your Financial Success",
+    title: "Tailored for Your Production AI Journey",
     description:
-      "Every recommendation, insight, and suggestion is personalized to your unique financial situation and goals.",
+      "Every engagement is customized to your unique technical stack, business requirements, and organizational maturity.",
     items: [
       {
         id: 1,
         content: (
           <div className="relative flex size-full items-center justify-center overflow-hidden">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative w-full h-full flex items-center justify-center"
-            >
+            <div className="relative w-full h-full flex items-center justify-center">
               {/* Animated Budget Bars */}
               <div className="relative w-full max-w-sm space-y-4 p-8">
                 <div className="text-center mb-6">
@@ -452,15 +447,9 @@ export const siteConfig = {
                       </span>
                     </div>
                     <div className="relative h-3 bg-muted rounded-full overflow-hidden">
-                      <motion.div
+                      <div
                         className={cn(category.color, "h-full rounded-full")}
-                        initial={{ width: `${category.current}%` }}
-                        animate={{ width: `${category.optimized}%` }}
-                        transition={{
-                          duration: 1.5,
-                          delay: index * 0.2,
-                          ease: "easeInOut",
-                        }}
+                        style={{ width: `${category.optimized}%` }}
                       />
                     </div>
                   </div>
@@ -476,79 +465,74 @@ export const siteConfig = {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         ),
-        title: "Custom Budget Optimization",
+        title: "Custom Implementation Strategy",
         description:
-          "AI creates budgets that actually work for your lifestyle, automatically adjusting to help you save more without sacrificing what matters most.",
+          "We design AI systems that work for your specific use case, automatically scaling to handle production complexity without sacrificing what matters most—reliability and performance.",
       },
       {
         id: 2,
         content: (
           <div className="relative flex size-full items-center justify-center overflow-hidden">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative w-full h-full flex items-center justify-center"
-            >
+            <div className="relative w-full h-full flex items-center justify-center">
               {/* Spending Pattern Visualization */}
               <div className="relative w-full max-w-sm p-8">
                 <div className="text-center mb-6">
                   <div className="text-2xl font-semibold text-primary">
-                    Spending Insights
+                    System Health
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    Behavioral Pattern Analysis
+                    Production Monitoring
                   </div>
                 </div>
 
                 {/* Central Node */}
                 <div className="relative flex items-center justify-center">
                   <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mb-4">
-                    <div className="text-white font-bold text-sm">YOU</div>
+                    <div className="text-white font-bold text-sm">AI</div>
                   </div>
 
                   {/* Orbiting Spending Categories */}
                   {[
                     {
-                      name: "Coffee",
+                      name: "Latency",
                       angle: 0,
                       distance: 60,
                       size: 12,
                       color: "bg-yellow-500",
                     },
                     {
-                      name: "Groceries",
+                      name: "Accuracy",
                       angle: 72,
                       distance: 70,
                       size: 16,
                       color: "bg-green-500",
                     },
                     {
-                      name: "Gas",
+                      name: "Cost",
                       angle: 144,
                       distance: 65,
                       size: 14,
                       color: "bg-red-500",
                     },
                     {
-                      name: "Dining",
+                      name: "Uptime",
                       angle: 216,
                       distance: 75,
                       size: 18,
                       color: "bg-blue-500",
                     },
                     {
-                      name: "Shopping",
+                      name: "Drift",
                       angle: 288,
                       distance: 55,
                       size: 10,
                       color: "bg-purple-500",
                     },
                   ].map((item, index) => (
-                    <motion.div
+                    <div
                       key={item.name}
                       className={cn(
                         item.color,
@@ -561,21 +545,14 @@ export const siteConfig = {
                         top: `calc(50% + ${Math.sin((item.angle * Math.PI) / 180) * item.distance}px)`,
                         transform: "translate(-50%, -50%)",
                       }}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: index * 0.1,
-                        ease: "easeOut",
-                      }}
                     >
                       {item.name.slice(0, 3)}
-                    </motion.div>
+                    </div>
                   ))}
 
                   {/* Connecting Lines */}
                   {[0, 72, 144, 216, 288].map((angle, index) => (
-                    <motion.div
+                    <div
                       key={angle}
                       className="absolute w-px bg-border opacity-30"
                       style={{
@@ -585,109 +562,102 @@ export const siteConfig = {
                         transformOrigin: "0 0",
                         transform: `rotate(${angle}deg)`,
                       }}
-                      initial={{ scaleY: 0 }}
-                      animate={{ scaleY: 1 }}
-                      transition={{
-                        duration: 0.3,
-                        delay: 0.5 + index * 0.05,
-                        ease: "easeOut",
-                      }}
                     />
                   ))}
                 </div>
 
                 <div className="mt-8 text-center space-y-2">
                   <div className="text-sm text-secondary font-semibold">
-                    Pattern Detected
+                    Anomaly Detected
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    You spend 40% more on weekends
+                    Model drift increasing 15% weekly
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         ),
-        title: "Behavioral Spending Insights",
+        title: "Comprehensive Monitoring",
         description:
-          "Understand your spending patterns and discover optimization opportunities through AI-powered behavioral analysis of your financial habits.",
+          "Understand your AI system's behavior and discover optimization opportunities through continuous monitoring of performance, cost, and reliability metrics.",
       },
     ],
   },
   quoteSection: {
-    subtitle: "Transform Your Finances.",
-    title: "Take Control Today",
+    subtitle: "Ship Production AI.",
+    title: "Start Your Engagement Today",
     description:
-      "Join thousands of users who have improved their financial health with AI-powered insights and predictive budgeting.",
+      "Join leading enterprises that have successfully deployed production AI systems with expert guidance and proven methodologies.",
     primaryButton: {
-      text: "Start Your Free Journey",
+      text: "Schedule Consultation",
       href: "/waitlist",
     },
     secondaryButton: {
-      text: "Talk to Founder",
+      text: "Talk to Our Team",
       href: "https://x.com/codehagen",
     },
   },
   pricing: {
-    title: "Pricing that grows with your wealth",
+    title: "Engagement models that scale with your needs",
     description:
-      "Start free and upgrade as your financial needs grow. Cancel anytime, no hidden fees.",
+      "Flexible consulting arrangements designed for enterprises at every stage of their AI journey.",
     pricingItems: [
       {
-        name: "Free",
+        name: "Advisory",
         href: "#",
-        price: "$0",
-        period: "month",
-        yearlyPrice: "$0",
+        price: "Custom",
+        period: "engagement",
+        yearlyPrice: "Custom",
         features: [
-          "Connect up to 2 accounts",
-          "Basic spending insights",
-          "Simple budget tracking",
-          "Monthly financial health score",
+          "Architecture review & recommendations",
+          "Production readiness assessment",
+          "Technical debt analysis",
+          "Best practices implementation guide",
         ],
-        description: "Perfect for getting started with personal finance",
-        buttonText: "Start Free",
+        description: "Perfect for teams evaluating their AI strategy",
+        buttonText: "Get Started",
         buttonColor: "bg-accent text-primary",
         isPopular: false,
       },
       {
-        name: "Premium",
+        name: "Implementation",
         href: "#",
-        price: "$9",
-        period: "month",
-        yearlyPrice: "$90",
+        price: "Custom",
+        period: "project",
+        yearlyPrice: "Custom",
         features: [
-          "Unlimited account connections",
-          "Advanced AI spending analysis",
-          "Predictive budgeting & forecasting",
-          "Real-time alerts & notifications",
-          "Investment tracking & insights",
-          "Custom financial goals",
-          "Export data & reports",
-          "Priority customer support",
+          "Hands-on system implementation",
+          "MLOps pipeline development",
+          "Production deployment support",
+          "Performance optimization",
+          "Team training & knowledge transfer",
+          "Ongoing technical support",
+          "Architecture documentation",
+          "Priority response times",
         ],
         description:
-          "Ideal for individuals and families serious about financial health",
-        buttonText: "Upgrade to Premium",
+          "Ideal for teams building production AI systems from scratch",
+        buttonText: "Schedule Consultation",
         buttonColor: "bg-secondary text-white",
         isPopular: true,
       },
       {
-        name: "Family",
+        name: "Retained",
         href: "#",
-        price: "$19",
+        price: "Custom",
         period: "month",
-        yearlyPrice: "$190",
+        yearlyPrice: "Custom",
         features: [
-          "Everything in Premium",
-          "Up to 6 family member accounts",
-          "Shared budgets & goals",
-          "Teen financial education tools",
-          "Family spending insights",
-          "Custom permission controls",
+          "Everything in Implementation",
+          "Dedicated technical team",
+          "24/7 production support",
+          "Continuous optimization",
+          "Monthly strategy sessions",
+          "Custom SLAs & guarantees",
         ],
-        description: "Best for families wanting to manage money together",
-        buttonText: "Choose Family",
+        description: "Best for enterprises running critical AI systems",
+        buttonText: "Contact Sales",
         buttonColor: "bg-primary text-primary-foreground",
         isPopular: false,
       },
@@ -696,201 +666,185 @@ export const siteConfig = {
   testimonials: [
     {
       id: "1",
-      name: "Alex Rivera",
-      role: "Financial Advisor",
-      img: "https://randomuser.me/api/portraits/men/91.jpg",
+      name: "Sarah Chen",
+      role: "VP of Engineering, FinTech Unicorn",
+      img: "https://randomuser.me/api/portraits/women/91.jpg",
       description: (
         <p>
-          Badget&apos;s AI-driven spending analysis has transformed how I help
-          clients manage their finances.
+          Ballast helped us ship our AI fraud detection system 6 months ahead of schedule.
           <Highlight>
-            Insights are now more accurate and actionable than ever.
+            Their expertise in production ML systems saved us from countless costly mistakes.
           </Highlight>{" "}
-          A game-changer for personal finance management.
+          Absolutely essential for any serious AI deployment.
         </p>
       ),
     },
     {
       id: "2",
-      name: "Samantha Lee",
-      role: "Working Mom & Badget User",
-      img: "https://randomuser.me/api/portraits/women/12.jpg",
+      name: "Marcus Johnson",
+      role: "CTO, Healthcare AI Platform",
+      img: "https://randomuser.me/api/portraits/men/12.jpg",
       description: (
         <p>
-          Using Badget&apos;s predictive budgeting has completely changed our
-          family&apos;s financial planning.
-          <Highlight>We&apos;re saving 40% more each month!</Highlight> Highly
-          recommend to any family wanting financial clarity.
+          Working with Ballast transformed our POC into a production-grade system.
+          <Highlight>They reduced our inference costs by 65% while improving accuracy.</Highlight> The ROI was immediate and substantial.
         </p>
       ),
     },
     {
       id: "3",
-      name: "Raj Patel",
-      role: "Small Business Owner",
-      img: "https://randomuser.me/api/portraits/men/45.jpg",
+      name: "Dr. Priya Sharma",
+      role: "Head of AI, Fortune 500 Retail",
+      img: "https://randomuser.me/api/portraits/women/45.jpg",
       description: (
         <p>
-          As a business owner, I need to track both personal and business
-          expenses. Badget&apos;s AI categorization does this perfectly.
-          <Highlight>My financial organization has doubled.</Highlight>{" "}
-          Essential tool for entrepreneurs.
+          Ballast&apos;s governance framework gave our board confidence to approve our AI roadmap.
+          <Highlight>Their risk management approach is enterprise-grade.</Highlight>{" "}
+          Critical for regulated industries deploying AI.
         </p>
       ),
     },
     {
       id: "4",
-      name: "Emily Chen",
-      role: "Product Manager at Digital Wave",
-      img: "https://randomuser.me/api/portraits/women/83.jpg",
+      name: "Alex Martinez",
+      role: "Director of ML, E-commerce Platform",
+      img: "https://randomuser.me/api/portraits/men/83.jpg",
       description: (
         <p>
-          #VoiceGen&apos;s AI-driven voice synthesis has made creating global
-          products a breeze.
-          <Highlight>Localization is now seamless and efficient.</Highlight> A
-          must-have for global product teams.
+          The monitoring and optimization framework Ballast built has been game-changing.
+          <Highlight>We caught and fixed production issues before they impacted customers.</Highlight> Their proactive approach to ML ops is exceptional.
         </p>
       ),
     },
     {
       id: "5",
-      name: "Michael Brown",
-      role: "Data Scientist at FinTech Innovations",
-      img: "https://randomuser.me/api/portraits/men/1.jpg",
+      name: "Jennifer Kim",
+      role: "VP Product, SaaS AI Startup",
+      img: "https://randomuser.me/api/portraits/women/1.jpg",
       description: (
         <p>
-          Leveraging #DataCrunch&apos;s AI for our financial models has given us
-          an edge in predictive accuracy.
+          Ballast helped us architect our multi-tenant AI infrastructure from day one.
           <Highlight>
-            Our investment strategies are now powered by real-time data
-            analytics.
+            Their expertise meant we built it right the first time, avoiding costly rewrites.
           </Highlight>{" "}
-          Transformative for the finance industry.
+          Invaluable for scaling AI products.
         </p>
       ),
     },
     {
       id: "6",
-      name: "Linda Wu",
-      role: "VP of Operations at LogiChain Solutions",
-      img: "https://randomuser.me/api/portraits/women/5.jpg",
+      name: "David Thompson",
+      role: "Chief Data Officer, Insurance Company",
+      img: "https://randomuser.me/api/portraits/men/5.jpg",
       description: (
         <p>
-          #LogiTech&apos;s supply chain optimization tools have drastically
-          reduced our operational costs.
+          The post-deployment support from Ballast has been exceptional.
           <Highlight>
-            Efficiency and accuracy in logistics have never been better.
+            They identified and fixed model drift issues before they became customer-facing problems.
           </Highlight>{" "}
+          True production AI expertise.
         </p>
       ),
     },
     {
       id: "7",
-      name: "Carlos Gomez",
-      role: "Head of R&D at EcoInnovate",
-      img: "https://randomuser.me/api/portraits/men/14.jpg",
+      name: "Rachel Foster",
+      role: "SVP Technology, Media Platform",
+      img: "https://randomuser.me/api/portraits/women/14.jpg",
       description: (
         <p>
-          By integrating #GreenTech&apos;s sustainable energy solutions,
-          we&apos;ve seen a significant reduction in carbon footprint.
+          Ballast&apos;s optimization work reduced our AI serving costs by $2M annually.
           <Highlight>
-            Leading the way in eco-friendly business practices.
+            They paid for themselves in the first quarter.
           </Highlight>{" "}
-          Pioneering change in the industry.
+          Clear ROI on production AI consulting.
         </p>
       ),
     },
     {
       id: "8",
-      name: "Aisha Khan",
-      role: "Chief Marketing Officer at Fashion Forward",
-      img: "https://randomuser.me/api/portraits/women/56.jpg",
+      name: "James Wilson",
+      role: "Head of Engineering, Logistics Tech",
+      img: "https://randomuser.me/api/portraits/men/56.jpg",
       description: (
         <p>
-          #TrendSetter&apos;s market analysis AI has transformed how we approach
-          fashion trends.
+          Working with Ballast gave our team confidence in our AI strategy.
           <Highlight>
-            Our campaigns are now data-driven with higher customer engagement.
+            Their hands-on approach and technical depth are unmatched.
           </Highlight>{" "}
-          Revolutionizing fashion marketing.
+          Partners, not just consultants.
         </p>
       ),
     },
     {
       id: "9",
-      name: "Tom Chen",
-      role: "Director of IT at HealthTech Solutions",
-      img: "https://randomuser.me/api/portraits/men/18.jpg",
+      name: "Dr. Lisa Anderson",
+      role: "AI Research Lead, Pharmaceutical Company",
+      img: "https://randomuser.me/api/portraits/women/18.jpg",
       description: (
         <p>
-          Implementing #MediCareAI in our patient care systems has improved
-          patient outcomes significantly.
+          Ballast helped us navigate the complexity of deploying AI in a regulated environment.
           <Highlight>
-            Technology and healthcare working hand in hand for better health.
+            Their governance framework met FDA requirements while enabling innovation.
           </Highlight>{" "}
-          A milestone in medical technology.
+          Critical expertise for healthcare AI.
         </p>
       ),
     },
     {
       id: "10",
-      name: "Sofia Patel",
-      role: "CEO at EduTech Innovations",
-      img: "https://randomuser.me/api/portraits/women/73.jpg",
+      name: "Kevin Patel",
+      role: "Founder, AI-First Startup",
+      img: "https://randomuser.me/api/portraits/men/73.jpg",
       description: (
         <p>
-          #LearnSmart&apos;s AI-driven personalized learning plans have doubled
-          student performance metrics.
+          Ballast taught our team production ML best practices that will serve us for years.
           <Highlight>
-            Education tailored to every learner&apos;s needs.
+            Knowledge transfer was as valuable as the implementation work.
           </Highlight>{" "}
-          Transforming the educational landscape.
+          Investment in long-term capability building.
         </p>
       ),
     },
     {
       id: "11",
-      name: "Jake Morrison",
-      role: "CTO at SecureNet Tech",
-      img: "https://randomuser.me/api/portraits/men/25.jpg",
+      name: "Michelle Rodriguez",
+      role: "Director of AI Strategy, Bank",
+      img: "https://randomuser.me/api/portraits/women/25.jpg",
       description: (
         <p>
-          With #CyberShield&apos;s AI-powered security systems, our data
-          protection levels are unmatched.
+          The risk assessment framework Ballast developed gave our compliance team confidence.
           <Highlight>
-            Ensuring safety and trust in digital spaces.
+            We now have clear processes for AI model approval and monitoring.
           </Highlight>{" "}
-          Redefining cybersecurity standards.
+          Essential for financial services AI.
         </p>
       ),
     },
     {
       id: "12",
-      name: "Nadia Ali",
-      role: "Product Manager at Creative Solutions",
-      img: "https://randomuser.me/api/portraits/women/78.jpg",
+      name: "Robert Chang",
+      role: "VP Engineering, Automotive AI",
+      img: "https://randomuser.me/api/portraits/men/78.jpg",
       description: (
         <p>
-          #DesignPro&apos;s AI has streamlined our creative process, enhancing
-          productivity and innovation.
-          <Highlight>Bringing creativity and technology together.</Highlight> A
-          game-changer for creative industries.
+          Ballast&apos;s expertise in edge AI deployment was exactly what we needed.
+          <Highlight>They optimized our models to run efficiently on vehicle hardware.</Highlight> Specialized knowledge that&apos;s hard to find.
         </p>
       ),
     },
     {
       id: "13",
-      name: "Omar Farooq",
-      role: "Founder at Startup Hub",
-      img: "https://randomuser.me/api/portraits/men/54.jpg",
+      name: "Amanda Foster",
+      role: "Chief Innovation Officer, Energy Company",
+      img: "https://randomuser.me/api/portraits/women/54.jpg",
       description: (
         <p>
-          #VentureAI&apos;s insights into startup ecosystems have been
-          invaluable for our growth and funding strategies.
+          Ballast helped us build an AI center of excellence from scratch.
           <Highlight>
-            Empowering startups with data-driven decisions.
+            Their playbooks and frameworks now guide all our AI initiatives.
           </Highlight>{" "}
-          A catalyst for startup success.
+          Foundational work that scales across the organization.
         </p>
       ),
     },
@@ -898,55 +852,55 @@ export const siteConfig = {
   faqSection: {
     title: "Frequently Asked Questions",
     description:
-      "Answers to common questions about Badget and its features. If you have any other questions, please don't hesitate to contact us.",
+      "Answers to common questions about Ballast's consulting services. If you have any other questions, please reach out to our team.",
     faQitems: [
       {
         id: 1,
-        question: "What is Badget?",
+        question: "What is Ballast?",
         answer:
-          "Badget is an AI-powered personal finance app that transforms your raw transaction data into actionable insights. It creates predictive budgets, tracks spending patterns, and provides a comprehensive financial health score to help you make smarter money decisions.",
+          "Ballast is a specialized AI consulting firm that helps enterprises bridge the gap between proof-of-concept and production-grade AI systems. We provide deep technical implementation expertise, post-deployment optimization, and comprehensive AI governance frameworks.",
       },
       {
         id: 2,
-        question: "How does Badget analyze my spending?",
+        question: "What makes Ballast different from other AI consultants?",
         answer:
-          "Badget uses advanced AI algorithms to categorize your transactions, identify spending patterns, detect unusual purchases, and predict future cash flow. It learns from your financial behavior to provide increasingly personalized insights and recommendations.",
+          "We focus exclusively on production AI systems—not research or demos. Our team has hands-on experience shipping and maintaining large-scale AI systems in production. We bring practical expertise in MLOps, system architecture, optimization, and governance that comes from solving real-world problems.",
       },
       {
         id: 3,
-        question: "Is my financial data secure?",
+        question: "What types of companies do you work with?",
         answer:
-          "Yes, Badget uses bank-grade encryption and security measures that meet or exceed industry standards. We employ end-to-end encryption, secure data centers, and never store your banking credentials. Your data is protected with the same level of security used by major financial institutions.",
+          "We work with enterprises and scale-ups that are already deploying or planning to deploy AI systems in production. Our clients range from Series B startups to Fortune 500 companies across healthcare, finance, retail, logistics, and technology sectors.",
       },
       {
         id: 4,
-        question: "Which banks and accounts can I connect?",
+        question: "How long does a typical engagement last?",
         answer:
-          "Badget supports connections to over 10,000 financial institutions including major banks, credit unions, credit cards, investment accounts, and crypto wallets. We use secure API connections that never require sharing your login credentials.",
+          "Engagement length varies based on scope and needs. Advisory projects typically run 4-8 weeks, implementation projects 3-6 months, and retained partnerships are ongoing. We design each engagement to deliver value quickly while building long-term capability.",
       },
       {
         id: 5,
-        question: "Is there a free version available?",
+        question: "Do you provide ongoing support after deployment?",
         answer:
-          "Yes, Badget offers a free tier that includes basic spending insights, simple budget tracking, and monthly financial health scores. You can connect up to 2 accounts and access core features without any cost.",
+          "Yes, post-deployment support is a core part of our service. We offer continuous monitoring, optimization, and troubleshooting through retained partnerships. We also provide knowledge transfer to ensure your team can maintain and evolve the systems we build together.",
       },
       {
         id: 6,
-        question: "How does Badget help me save money?",
+        question: "What ROI can we expect from working with Ballast?",
         answer:
-          "Badget identifies spending patterns, suggests budget optimizations, alerts you to unusual expenses, and provides predictive insights about your financial future. Many users save 20-30% more each month by following Badget's AI-powered recommendations.",
+          "Our clients typically see 40-60% reduction in AI infrastructure costs, 3x faster time-to-production, and significant improvements in model performance and reliability. Many engagements pay for themselves within the first quarter through cost savings and accelerated deployment.",
       },
     ],
   },
   ctaSection: {
     id: "cta",
-    title: "Budget. Optimize. Prosper",
+    title: "Design. Deploy. Scale",
     backgroundImage: "/cta-background.png",
     button: {
-      text: "Start Your Free Financial Journey Today",
+      text: "Schedule Your Consultation Today",
       href: "#",
     },
-    subtext: "No credit card required, upgrade anytime",
+    subtext: "Free initial assessment, flexible engagement models",
   },
   footerLinks: [
     {

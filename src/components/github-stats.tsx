@@ -1,26 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getGitHubStats, type GitHubStats } from "@/actions/open-actions";
 import { Skeleton } from "@/components/ui/skeleton";
+
+type GitHubStats = {
+  stargazers: number;
+  forks: number;
+  openIssues: number;
+  totalCommits: number;
+};
 
 export function GitHubStatsSection() {
   const [stats, setStats] = useState<GitHubStats | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchStats() {
-      try {
-        const githubStats = await getGitHubStats();
-        setStats(githubStats);
-      } catch (error) {
-        console.error("Failed to fetch GitHub stats:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchStats();
+    // Simulate loading with mock data
+    setTimeout(() => {
+      setStats({
+        stargazers: 1250,
+        forks: 180,
+        openIssues: 12,
+        totalCommits: 340,
+      });
+      setLoading(false);
+    }, 1000);
   }, []);
 
   const formatNumber = (num: number): string => {
