@@ -1,8 +1,9 @@
 import { ArchitectureBentoAnimation } from "@/components/architecture-bento-animation";
 import { FirstBentoAnimation } from "@/components/first-bento-animation";
 import { FourthBentoAnimation } from "@/components/fourth-bento-animation";
-import { SecondBentoAnimation } from "@/components/second-bento-animation";
+import { ProductionReadinessDashboard } from "@/components/production-readiness-dashboard";
 import { ThirdBentoAnimation } from "@/components/third-bento-animation";
+import { AIStackLayers } from "@/components/ai-stack-layers";
 import { cn } from "@/lib/utils";
 
 export const Highlight = ({
@@ -54,9 +55,6 @@ export const siteConfig = {
       { id: 1, name: "Home", href: "#hero" },
       { id: 2, name: "Services", href: "#bento" },
       { id: 3, name: "Expertise", href: "#features" },
-      { id: 4, name: "Case Studies", href: "#pricing" },
-      { id: 5, name: "Blog", href: "/blog" },
-      { id: 6, name: "Contact", href: "/help" },
     ],
   },
   hero: {
@@ -79,11 +77,7 @@ export const siteConfig = {
     cta: {
       primary: {
         text: "Book Consultation",
-        href: "/waitlist",
-      },
-      secondary: {
-        text: "Case Studies",
-        href: "/waitlist",
+        href: "#",
       },
     },
   },
@@ -341,31 +335,24 @@ export const siteConfig = {
       },
       {
         id: 2,
-        content: <SecondBentoAnimation />,
-        title: "MLOps & Infrastructure",
+        content: <ProductionReadinessDashboard />,
+        title: "Production Readiness Checklist",
         description:
-          "Build robust ML pipelines with automated training, testing, and deployment. Implement monitoring, versioning, and rollback strategies.",
+          "Ensure your AI systems are bulletproof before going live. Implement monitoring, error handling, fallback strategies, and cost controls that prevent production disasters.",
       },
       {
         id: 3,
-        content: (
-          <ThirdBentoAnimation
-            data={[1200, 1800, 1500, 2200, 2800, 3100, 3500]}
-            toolTipValues={[
-              1200, 1800, 1500, 2200, 2800, 3100, 3500, 4000, 4500, 5000,
-            ]}
-          />
-        ),
-        title: "Performance Optimization",
+        content: <AIStackLayers />,
+        title: "AI Stack Selection & Integration",
         description:
-          "Continuous monitoring and optimization of AI systems. Reduce latency, improve accuracy, and lower inference costs.",
+          "Navigate the overwhelming AI tooling landscape with confidence. Get expert guidance on vendor selection, integration patterns, and migration strategies tailored to your use case.",
       },
       {
         id: 4,
         content: <FourthBentoAnimation once={false} />,
-        title: "Enterprise AI Governance",
+        title: "Cost & Performance Optimization",
         description:
-          "Establish frameworks for responsible AI deployment. Model monitoring, bias detection, compliance, and risk management.",
+          "Continuous monitoring and optimization of AI systems. Reduce latency, improve accuracy, and lower inference costs through proven techniques like caching, token optimization, and intelligent rate limiting.",
       },
     ],
   },
@@ -591,7 +578,7 @@ export const siteConfig = {
       "Join leading enterprises that have successfully deployed production AI systems with expert guidance and proven methodologies.",
     primaryButton: {
       text: "Schedule Consultation",
-      href: "/waitlist",
+      href: "#",
     },
     secondaryButton: {
       text: "Talk to Our Team",
@@ -906,28 +893,28 @@ export const siteConfig = {
     {
       title: "Company",
       links: [
-        { id: 1, title: "About", url: "/waitlist" },
-        { id: 2, title: "Contact", url: "/waitlist" },
-        { id: 3, title: "Blog", url: "/waitlist" },
-        { id: 4, title: "Story", url: "/waitlist" },
+        { id: 1, title: "About", url: "#" },
+        { id: 2, title: "Contact", url: "#" },
+        { id: 3, title: "Blog", url: "#" },
+        { id: 4, title: "Story", url: "#" },
       ],
     },
     {
       title: "Products",
       links: [
-        { id: 5, title: "Company", url: "/waitlist" },
-        { id: 6, title: "Product", url: "/waitlist" },
-        { id: 7, title: "Open Startup", url: "/open" },
-        { id: 8, title: "More", url: "/waitlist" },
+        { id: 5, title: "Company", url: "#" },
+        { id: 6, title: "Product", url: "#" },
+        { id: 7, title: "Open Startup", url: "#" },
+        { id: 8, title: "More", url: "#" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { id: 9, title: "Press", url: "/waitlist" },
-        { id: 10, title: "Careers", url: "/waitlist" },
-        { id: 11, title: "Newsletters", url: "/waitlist" },
-        { id: 12, title: "More", url: "/waitlist" },
+        { id: 9, title: "Press", url: "#" },
+        { id: 10, title: "Careers", url: "#" },
+        { id: 11, title: "Newsletters", url: "#" },
+        { id: 12, title: "More", url: "#" },
       ],
     },
   ],

@@ -110,15 +110,17 @@ export function Navbar() {
               : "shadow-none px-7"
           )}
         >
-          <div className="flex h-[56px] items-center justify-between p-4">
-            <Link href="/" className="flex items-center gap-3">
+          <div className="grid grid-cols-3 h-[56px] items-center">
+            <Link href="/" className="flex items-center gap-3 justify-start pl-4">
               {/* <Icons.logo className="size-7 md:size-10" /> */}
               <p className="text-lg font-semibold text-primary">Ballast</p>
             </Link>
 
-            <NavMenu />
+            <div className="flex justify-center">
+              <NavMenu />
+            </div>
 
-            <div className="flex flex-row items-center gap-1 md:gap-3 shrink-0">
+            <div className="flex flex-row items-center gap-1 md:gap-3 shrink-0 justify-end pr-4">
               <ThemeToggle />
               <button
                 className="md:hidden border border-border size-8 rounded-md cursor-pointer flex items-center justify-center"
@@ -218,10 +220,10 @@ export function Navbar() {
                 {/* Action buttons */}
                 <div className="flex flex-col gap-2">
                   <Link
-                    href="/waitlist"
+                    href="#"
                     className="bg-secondary h-8 flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-secondary-foreground w-full px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12] hover:bg-secondary/80 transition-all ease-out active:scale-95"
                   >
-                    Try for free
+                    Book Consultation
                   </Link>
                 </div>
               </div>

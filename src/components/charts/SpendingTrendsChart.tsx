@@ -97,7 +97,7 @@ export const SpendingTrendsChart = ({ data }: SpendingTrendsChartProps) => {
           barSeries={{
             categories: ["Income", "Spending"],
             yAxisLabel: "Amount ($)",
-            colors: ["green", "red"],
+            colors: ["lime", "red"],
           }}
           lineSeries={{
             categories: ["Budget"],

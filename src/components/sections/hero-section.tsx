@@ -31,12 +31,6 @@ export function HeroSection() {
             >
               {hero.cta.primary.text}
             </Link>
-            <Link
-              href={hero.cta.secondary.href}
-              className="h-10 flex items-center justify-center px-6 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80 whitespace-nowrap"
-            >
-              {hero.cta.secondary.text}
-            </Link>
           </div>
         </div>
       </div>

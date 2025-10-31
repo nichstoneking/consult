@@ -1,5 +1,4 @@
 import { BentoSection } from "@/components/sections/bento-section";
-import { CTASection } from "@/components/sections/cta-section";
 import { FAQSection } from "@/components/sections/faq-section";
 import FeaturesSection from "@/components/sections/features-section";
 import { HeroSection } from "@/components/sections/hero-section";
@@ -13,7 +12,6 @@ export default function Home() {
       <QuoteSection />
       <FeaturesSection />
       <FAQSection />
-      <CTASection />
     </main>
   );
 }

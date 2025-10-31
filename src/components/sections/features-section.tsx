@@ -101,12 +101,12 @@ export default function FeaturesSection() {
                   />
 
                   <CircularUI
-                    label="Optimize"
+                    label="Scale"
                     circles={[{ pattern: "blue" }, { pattern: "none" }]}
                   />
 
                   <CircularUI
-                    label="Scale"
+                    label="Iterate"
                     circles={[{ pattern: "primary" }, { pattern: "none" }]}
                     className="hidden sm:block"
                   />
